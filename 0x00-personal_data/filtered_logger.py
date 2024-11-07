@@ -8,22 +8,18 @@ import os
 
 
 class RedactingFormatter(logging.Formatter):
-    """ redacting the formatter class
-    """
+    """ Redacting Formatter class
+        """
 
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
 
-    def __init__(self, fields: List[str]):
+    def __init__(self):
         super(RedactingFormatter, self).__init__(self.FORMAT)
-        self.fields = fields
 
     def format(self, record: logging.LogRecord) -> str:
-        """ returning the filtered values from log records """
-        return filter_datum(self.fields, self.REDACTION,
-                            super().format(record), self.SEPARATOR)
-
+        NotImplementedError
 
 PII_FIELDS = ("name", "email", "password", "ssn", "phone")
 
